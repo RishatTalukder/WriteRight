@@ -90,11 +90,13 @@ INSTALLED_APPS = [
     'rest_framework', # for making the API
     'log_api', # for the log_api app
     'rest_framework_simplejwt.token_blacklist', # for the JWT
+    'corsheaders', # for cross origin requests
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware", # for cross origin requests
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
