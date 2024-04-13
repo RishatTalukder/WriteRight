@@ -2,6 +2,7 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import "./App.css";
+import { AuthContext, AuthProvider } from "./context/AuthContext";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -11,11 +12,13 @@ import PrivateRoute from "./utils/PrivateRoute";
 function App() {
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<PrivateRoute element={<HomePage />} />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
+      <AuthProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<PrivateRoute element={<HomePage />} />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
