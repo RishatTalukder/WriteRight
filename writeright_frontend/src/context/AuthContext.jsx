@@ -1,13 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 
 const AuthContext = createContext();
 
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  let [authTokens, setAuthTokens] = useState();
-  let [user, setUser] = useState();
+  let [authTokens, setAuthTokens] = useState(null);
+  let [user, setUser] = useState(null);
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -22,13 +23,23 @@ export const AuthProvider = ({ children }) => {
 
       // The response object will contain the data returned from the API.
       // You can access it using response.data.
-      console.log(response.data);
+      console.log(response);
 
       // If the login was successful, you might want to save the token in local storage
       // localStorage.setItem('token', response.data.token);
 
       // Return the response data in case it needs to be used by the caller
-      console.log(response.data);
+      if (response.status === 200) {
+        console.log("noice");
+        setAuthTokens(response.data);
+        setUser(jwtDecode(response.data.access));
+        console.log("user", jwtDecode(response.data.access));
+      }
+      else {
+        console.log("bad");
+      }
+      console.log(authTokens);
+      console.log(user);
       return response.data;
     } catch (error) {
       // Handle the error
@@ -43,6 +54,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   let contextData = {
+    user: user,
     loginUser: loginUser,
   };
 
