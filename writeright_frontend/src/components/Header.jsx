@@ -6,15 +6,22 @@ const Header = () => {
   let { user } = useContext(AuthContext);
   return (
     <div>
-      <Link to="">Home</Link>
-      <span> | </span>
-      {user ? <Link to="#">Logout</Link> : <Link to="/login">Login</Link>}
-
       {user ? (
-        <div>
-          <span>welcome, {user.username}</span>
-        </div>
-      ) : null}
+        <>
+          <Link to="/home">Home</Link>
+          <span> | </span>
+          <Link to="$">Logout</Link>
+          <div>
+            <span>{user.username}</span>
+          </div>
+        </>
+      ) : (
+        <>
+          <Link to="/">Home</Link>
+          <span> | </span>
+          <Link to="/login">Login</Link>
+        </>
+      )}
     </div>
   );
 };

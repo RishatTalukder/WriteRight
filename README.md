@@ -30,3 +30,6 @@ This is a website to share You stories/poems or any kind of literature that You 
 11. Mkae a context provider in the `AuthContext.js` file.
 12. Setup the `axios` for the user authentication in the `AuthContext.js` file.
 13. fetch the token from the backend and store it in the local storage.
+14. pass the token and fetched user data to context provider.
+15. consume the context in the `LoginPage.js` and `HomePage.js` file.
+16. FIx the private routing in the `App.js` file.

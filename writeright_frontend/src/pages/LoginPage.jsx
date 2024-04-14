@@ -8,13 +8,13 @@ const LoginPage = () => {
 
   return (
     <div>
-      {user ? <Navigate to="/home" /> : (
+      {/* {user ? <Navigate to="/home" /> : ( */}
         <form onSubmit={loginUser}>
         <input type="text" name="username" placeholder="Enter Username" />
         <input type="password" name="password" placeholder="Enter Password" />
         <input type="submit" />
       </form>
-      )}
+      {/* )} */}
       
     </div>
   );
