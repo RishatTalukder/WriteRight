@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import {jwtDecode} from "jwt-decode";
+import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -40,7 +41,8 @@ export const AuthProvider = ({ children }) => {
       }
       console.log(authTokens);
       console.log(user);
-      return response.data;
+      //redirect to home page
+      return <Navigate to="/home" />;
     } catch (error) {
       // Handle the error
       console.error("An error occurred while logging in:", error);
@@ -51,6 +53,7 @@ export const AuthProvider = ({ children }) => {
       // Re-throw the error in case it needs to be handled by the caller
       throw error;
     }
+    
   };
 
   let contextData = {
