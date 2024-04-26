@@ -8,7 +8,7 @@ function PrivateRoute({ path }) {
   return (
     <div>
       {isAuthenticated ? (
-        <Navigate to="/home"/>
+        <Navigate to="/home"z/>
       ) : (
         <Navigate to="/login"/>
       )}
